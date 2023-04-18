@@ -17,34 +17,35 @@ frames = []
 
 # 开始录制音频
 def start_recording():
-    global stream, frames
-    #try:
+    global stream, frames,is_recording
+    is_recording = True
+    try:
     # 创建 pyaudio 流
-    stream = p.open(format=FORMAT,
-                    channels=CHANNELS,
-                    rate=RATE,
-                    input=True,
-                    frames_per_buffer=CHUNK,
-                    input_device_index=2
-                    )
+        stream = p.open(format=FORMAT,
+                        channels=CHANNELS,
+                        rate=RATE,
+                        input=True,
+                        frames_per_buffer=CHUNK,
+                        input_device_index=2
+                        )
 
-    # 清空音频数据列表
-    frames = []
-    print("* 录制音频开始 *")
-    while True:
-        data = stream.read(CHUNK)
-        frames.append(data)
-        root.update()  # 刷新 GUI 界面，保证程序响应
-    #frames.append(stream.read(1024))
+        # 清空音频数据列表
+        frames = []
+        print("* 录制音频开始 *")
+        while is_recording: # 判断是否录制
+            data = stream.read(CHUNK)
+            frames.append(data)
+            root.update()  # 刷新 GUI 界面，保证程序响应
 
-    '''except Exception as e:
+    except Exception as e:
         # 异常处理
         print("无法访问麦克风！请检查麦克风是否连接并授权录音权限。")
-        print(e)'''
+        print(e)
 
 # 结束录制音频
 def stop_recording():
-    global stream, frames
+    global stream, frames,is_recording
+    is_recording = False
     # 停止并关闭 pyaudio 流
     stream.stop_stream()
     stream.close()
