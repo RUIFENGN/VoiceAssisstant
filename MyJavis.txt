@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>文本框示例</title>
+</head>
+<body>
+	<h3>请输入以下信息：</h3>
+	<label for="username">用户名：</label>
+	<input type="text" id="username" name="username"><br><br>
+	<label for="password">密码：</label>
+	<input type="password" id="password" name="password"><br><br>
+	<button type="submit">提交</button>
+</body>
+</html>

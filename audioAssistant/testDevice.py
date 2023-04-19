@@ -3,7 +3,7 @@ import pyaudio
 p = pyaudio.PyAudio()
 
 # 选择测试设备
-device_id = 2  # 选择用于测试的设备ID
+device_id = 0  # 选择用于测试的设备ID
 
 # 打开测试设备
 stream = p.open(format=pyaudio.paInt16, channels=1,

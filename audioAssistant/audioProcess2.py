@@ -4,19 +4,21 @@ from transformers import Wav2Vec2ForCTC, Wav2Vec2Tokenizer
 from transformers import Wav2Vec2Processor
 from transformers import set_seed
 import responseGPT as rg
+import librosa
 
 import huggingface_hub
+token = "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"
+huggingface_hub.login(token=token)
+
+# 加载模型和标记器
+model = Wav2Vec2ForCTC.from_pretrained("facebook/wav2vec2-large-960h-lv60-self")
+
+
+processor = Wav2Vec2Processor.from_pretrained("facebook/wav2vec2-large-960h-lv60-self")
+
+import pyaudio
 
 def audioProcess(wavFile):
-    token = "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"
-    huggingface_hub.login(token=token)
-
-    # 加载模型和标记器
-    model = Wav2Vec2ForCTC.from_pretrained("facebook/wav2vec2-large-960h-lv60-self")
-
-
-    processor = Wav2Vec2Processor.from_pretrained("facebook/wav2vec2-large-960h-lv60-self")
-
 
     # 加载音频文件并进行预处理
     audio_file = wavFile
