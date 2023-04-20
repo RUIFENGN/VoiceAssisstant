@@ -7,7 +7,8 @@ import responseGPT as rg
 import librosa
 
 import huggingface_hub
-token = "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"
+token = "YOUR HUGGINGFACE TOKEN" # 改成你自己的hugging face的token进行登录
+
 huggingface_hub.login(token=token)
 
 # 加载模型和标记器

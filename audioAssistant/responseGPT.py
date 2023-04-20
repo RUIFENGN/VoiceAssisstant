@@ -1,5 +1,5 @@
 import openai
-openai.api_key = "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"
+openai.api_key = "YOUR API KEY" #将此修改为自己的openai的api key
 
 def responseGPT(prompt):
     # 利用OpenAI的GPT-3 API对语音进行回复
