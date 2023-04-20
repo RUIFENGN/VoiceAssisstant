@@ -36,3 +36,4 @@ def audioProcess(wavFile):
     transcription = processor.decode(predicted_ids[0])
     print(transcription)
     print(rg.responseGPT(transcription))
+    return transcription
