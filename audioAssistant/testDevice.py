@@ -1,4 +1,4 @@
-import pyaudio
+'''import pyaudio
 
 p = pyaudio.PyAudio()
 
@@ -18,3 +18,12 @@ output_stream = p.open(format=pyaudio.paInt16, channels=1,
 while True:
     data = stream.read(1024)
     output_stream.write(data)
+'''
+
+import pyaudio
+
+p = pyaudio.PyAudio()
+for i in range(p.get_device_count()):
+    dev = p.get_device_info_by_index(i)
+    if dev['maxInputChannels'] > 0:
+        print(f"编号{i}: {dev['name']}")

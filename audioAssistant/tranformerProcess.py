@@ -35,5 +35,6 @@ def audioProcess(wavFile):
     predicted_ids = torch.argmax(logits, dim=-1)
     transcription = processor.decode(predicted_ids[0])
     print(transcription)
-    print(rg.responseGPT(transcription))
-    return transcription
+    GPTstring = rg.responseGPT(transcription)
+    print(GPTstring)
+    return transcription,GPTstring
